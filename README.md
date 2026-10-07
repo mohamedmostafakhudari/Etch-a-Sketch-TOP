@@ -6,7 +6,7 @@ basic wireframe ![](https://wireframe.cc/wgsd1z)
 ### Main
 - [x] create a 16x16 grid of square div 
 - [x] on hover, grid squares should change color to black color
-- [ ] the grid size should be adjustable based on user input
+- [x] the grid size should be adjustable based on user input
 ### Extra
 - [ ] i can change the fill color of the square, not always black
 - [ ] random fill color mode
