@@ -1,17 +1,17 @@
 /* UI ----------------------------- */
-const gridContainer = document.querySelector(".grid-container");
-const gridInputText = document.querySelector("#grid-size-text");
+const canvasContainer = document.querySelector(".canvas-container");
+const canvasSizeInputText = document.querySelector("#canvas-size-text");
 
 const onScreen = {
   size: null,
 }
 
 export function render(state) {
-  renderGridOptions(state);
-  applyGridAppearance(state);
+  renderCanvasOptions(state);
+  applyCanvasAppearance(state);
   
   if (state.size !== onScreen.size) {
-    renderGrid(state);
+    renderCanvas(state);
     onScreen.size = state.size;
   }
 }
@@ -20,15 +20,15 @@ export function fillSquare(square, fill) {
   square.style.setProperty("--fill-color", fill);
 }
 
-function renderGridOptions(state) {
-  gridInputText.textContent = state.size;
+function renderCanvasOptions(state) {
+  canvasSizeInputText.textContent = state.size;
 }
 
-function renderGrid(state) {
-  // clears the gridContainer before adding a new one - useful with resetting
-  gridContainer.innerHTML = "";
-  const grid = createGrid(state);
-  gridContainer.appendChild(grid);
+function renderCanvas(state) {
+  // clears the canvasContainer before adding a new one - useful with resetting
+  canvasContainer.innerHTML = "";
+  const canvas = createCanvas(state);
+  canvasContainer.appendChild(canvas);
 }
 
 function createSquare() {
@@ -37,14 +37,12 @@ function createSquare() {
   return divElem;
 }
 
-function createGrid(state) {
-  const root = document.documentElement;
-  
-  const grid = document.createElement("div");
-  grid.setAttribute("class", "squares-grid");
-  grid.style.setProperty('--grid-size', state.size);
-  grid.style.setProperty('--grid-width', state.width + 'px');
-  grid.style.setProperty('--border-thickness', state.borderThickness + 'px');
+function createCanvas(state) {  
+  const canvas = document.createElement("div");
+  canvas.setAttribute("class", "canvas-board");
+  canvas.style.setProperty('--canvas-size', state.size);
+  canvas.style.setProperty('--canvas-width', state.width + 'px');
+  canvas.style.setProperty('--border-thickness', state.borderThickness + 'px');
   /*
   in this case appending to document fragment doesn't matter but in other cases
   if we were appending to an element already existing in the DOM it would improve
@@ -58,10 +56,10 @@ function createGrid(state) {
     fragment.appendChild(square);
   }
 
-  grid.appendChild(fragment);
-  return grid;
+  canvas.appendChild(fragment);
+  return canvas;
 }
 
-function applyGridAppearance(state) {
-  gridContainer.classList.toggle("grid-hidden", !state.showGrid);
+function applyCanvasAppearance(state) {
+  canvasContainer.classList.toggle("grid-hidden", !state.showGrid);
 }

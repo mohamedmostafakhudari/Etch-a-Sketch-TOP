@@ -135,28 +135,28 @@ body {
   }
 }
 
-.squares-grid {
-  --grid-border-thickness: 1px;
-  --grid-width: 600px;
-  --grid-size: 16;
-  --square-size: calc(var(--grid-width) / var(--grid-size));
-  --grid-border-fill: var(--color-border);
+.canvas-board {
+  --canvas-border-thickness: 1px;
+  --canvas-width: 600px;
+  --canvas-size: 16;
+  --square-size: calc(var(--canvas-width) / var(--canvas-size));
+  --canvas-border-fill: var(--color-border);
   --square-border-fill: var(--color-border);
 
   display: flex;
   flex-flow: row wrap;
 
-  width: calc(var(--grid-width) + var(--grid-border-thickness) * 2);
-  border: var(--grid-border-thickness) solid var(--grid-border-fill, var(--color-border));
+  width: calc(var(--canvas-width) + var(--canvas-border-thickness) * 2);
+  border: var(--canvas-border-thickness) solid var(--canvas-border-fill, var(--color-border));
 }
 
-.squares-grid .square {
+.canvas-board .square {
   flex-basis: var(--square-size);
   aspect-ratio: 1;
   background-color: var(--fill-color, #fff);
   border: 1px solid var(--square-border-fill, var(--color-border));
 }
 
-.grid-hidden .squares-grid .square {
+.grid-hidden .canvas-board .square {
   border-color: transparent;
 }

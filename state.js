@@ -1,5 +1,5 @@
 /* State & Logic --------------------------------------- */
-const drawingGridState = {
+const drawingCanvasState = {
   width: 600,
   size: 16,
   borderThickness: 1,
@@ -26,21 +26,21 @@ function notify() {
   listeners.forEach(fn => fn(snapshot));
 }
 
-export function updateGridSize(newSize) {
-  drawingGridState.size = newSize;
+export function updateCanvasSize(newSize) {
+  drawingCanvasState.size = newSize;
   notify();
 }
 
 export function showGrid() {
-  drawingGridState.showGrid = true;
+  drawingCanvasState.showGrid = true;
   notify();
 }
 
 export function hideGrid() {
-  drawingGridState.showGrid = false;
+  drawingCanvasState.showGrid = false;
   notify();
 }
 
 export function getCurrentState() {
-  return { ...drawingGridState }
+  return { ...drawingCanvasState }
 }
