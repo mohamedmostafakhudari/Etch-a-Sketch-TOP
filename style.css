@@ -125,6 +125,8 @@ body {
 }
 
 .options-menu {
+  color: var(--color-text-primary);
+  
   ul {
     display: flex;
     flex-direction: column;
