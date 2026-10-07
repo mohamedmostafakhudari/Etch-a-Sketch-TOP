@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch A Sketch</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>Etch A Sketch</h1>
+    </div>
+    <button class="btn" id="options-btn">options</button>
+    <div class="options-menu" id="options-menu" hidden>
+      <h3>Settings</h3>
+      <ul>
+        <li class="options-item">
+          <label for="show-grid">
+            <input type="checkbox" name="show-grid" id="show-grid">
+            Show grid
+          </label>
+        </li>
+        <li class="options-item">
+          <p>Grid size: <span id="grid-size" class="grid-size">16</span>px</p>
+          <input type="range" name="grid-size" id="grid-size" min="10" max="100">
+        </li>
+        <li class="options-item">
+          <div class="color-picker-wrapper">
+            <label for="color-picker">Color:</label>
+            <input type="color" name="#000000" id="color-picker" class="color-picker">
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="grid-container">
+      <div class="squares-grid" id="squares-grid">
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
