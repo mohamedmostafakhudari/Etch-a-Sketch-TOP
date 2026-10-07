@@ -140,17 +140,23 @@ body {
   --grid-width: 600px;
   --grid-size: 16;
   --square-size: calc(var(--grid-width) / var(--grid-size));
+  --grid-border-fill: var(--color-border);
+  --square-border-fill: var(--color-border);
 
   display: flex;
   flex-flow: row wrap;
 
   width: calc(var(--grid-width) + var(--grid-border-thickness) * 2);
-  border: var(--grid-border-thickness) solid var(--color-border);
+  border: var(--grid-border-thickness) solid var(--grid-border-fill, var(--color-border));
 }
 
 .squares-grid .square {
   flex-basis: var(--square-size);
   aspect-ratio: 1;
   background-color: var(--fill-color, #fff);
-  border: 1px solid #000;
+  border: 1px solid var(--square-border-fill, var(--color-border));
+}
+
+.grid-hidden .squares-grid .square {
+  border-color: transparent;
 }

@@ -13,8 +13,19 @@ gridContainer.addEventListener("mouseover", (e) => {
   ui.fillSquare(square, state.getCurrentState().fillColor);
 });
 
-const gridSize = document.querySelector("input[name=grid-size]");
+const gridSizeRange = document.querySelector("input[name=grid-size]");
 
-gridSize.addEventListener("input", () => {  
-  state.updateGridSize(Number(gridSize.value));
+gridSizeRange.addEventListener("input", () => {  
+  state.updateGridSize(Number(gridSizeRange.value));
 });
+
+const showGridCheckbox = document.querySelector("input[name=hide-grid]");
+
+showGridCheckbox.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    state.hideGrid();
+  } else {
+    state.showGrid();
+  }
+});
+

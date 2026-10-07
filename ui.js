@@ -1,7 +1,24 @@
 /* UI ----------------------------- */
-
 const gridContainer = document.querySelector(".grid-container");
 const gridInputText = document.querySelector("#grid-size-text");
+
+const onScreen = {
+  size: null,
+}
+
+export function render(state) {
+  renderGridOptions(state);
+  applyGridAppearance(state);
+  
+  if (state.size !== onScreen.size) {
+    renderGrid(state);
+    onScreen.size = state.size;
+  }
+}
+
+export function fillSquare(square, fill) {
+  square.style.setProperty("--fill-color", fill);
+}
 
 function renderGridOptions(state) {
   gridInputText.textContent = state.size;
@@ -14,19 +31,6 @@ function renderGrid(state) {
   gridContainer.appendChild(grid);
 }
 
-const onScreen = {
-  size: null,
-}
-
-export function render(state) {
-  renderGridOptions(state);
-  
-  if (state.size !== onScreen.size) {
-    renderGrid(state);
-    onScreen.size = state.size;
-  }
-}
-
 function createSquare() {
   const divElem = document.createElement("div");
   divElem.classList.add("square");
@@ -34,12 +38,13 @@ function createSquare() {
 }
 
 function createGrid(state) {
+  const root = document.documentElement;
+  
   const grid = document.createElement("div");
   grid.setAttribute("class", "squares-grid");
   grid.style.setProperty('--grid-size', state.size);
   grid.style.setProperty('--grid-width', state.width + 'px');
   grid.style.setProperty('--border-thickness', state.borderThickness + 'px');
-  
   /*
   in this case appending to document fragment doesn't matter but in other cases
   if we were appending to an element already existing in the DOM it would improve
@@ -57,6 +62,6 @@ function createGrid(state) {
   return grid;
 }
 
-export function fillSquare(square, fill) {
-  square.style.setProperty("--fill-color", fill);
+function applyGridAppearance(state) {
+  gridContainer.classList.toggle("grid-hidden", !state.showGrid);
 }

@@ -4,6 +4,7 @@ const drawingGridState = {
   size: 16,
   borderThickness: 1,
   fillColor: "#000",
+  showGrid: true, 
 }
 
 const listeners = new Set();
@@ -27,6 +28,16 @@ function notify() {
 
 export function updateGridSize(newSize) {
   drawingGridState.size = newSize;
+  notify();
+}
+
+export function showGrid() {
+  drawingGridState.showGrid = true;
+  notify();
+}
+
+export function hideGrid() {
+  drawingGridState.showGrid = false;
   notify();
 }
 
