@@ -16,7 +16,7 @@ canvasContainer.addEventListener("mouseover", (e) => {
 const canvasSizeRange = document.querySelector("input[name=canvas-size]");
 
 canvasSizeRange.addEventListener("input", () => {  
-  state.updateCanvasSize(Number(canvasSizeRange.value));
+  state.setCanvasSize(Number(canvasSizeRange.value));
 });
 
 const hideGridCheckbox = document.querySelector("input[name=hide-grid]");
@@ -29,3 +29,9 @@ hideGridCheckbox.addEventListener("change", (e) => {
   }
 });
 
+
+const colorPicker = document.querySelector("input[name=color-picker]");
+colorPicker.addEventListener("change", () => {
+  console.log(colorPicker.value);
+  state.setFillColor(colorPicker.value);
+})

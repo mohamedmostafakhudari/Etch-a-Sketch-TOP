@@ -26,7 +26,7 @@ function notify() {
   listeners.forEach(fn => fn(snapshot));
 }
 
-export function updateCanvasSize(newSize) {
+export function setCanvasSize(newSize) {
   drawingCanvasState.size = newSize;
   notify();
 }
@@ -39,6 +39,10 @@ export function showGrid() {
 export function hideGrid() {
   drawingCanvasState.showGrid = false;
   notify();
+}
+
+export function setFillColor(newColor) {
+  drawingCanvasState.fillColor = newColor;
 }
 
 export function getCurrentState() {
