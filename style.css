@@ -93,6 +93,12 @@ body {
   color: var(--color-text-primary);
 }
 
+.btn {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+
+  cursor: pointer;
+}
 .header {
   display: flex;
   align-items: center;
@@ -101,6 +107,11 @@ body {
   background-color: var(--color-surface);
 
   box-shadow: var(--shadow-sm);
+}
+
+.header > .buttons-wrapper {
+  display: flex;
+  gap: var(--space-4);
 }
 
 .header #options-btn {

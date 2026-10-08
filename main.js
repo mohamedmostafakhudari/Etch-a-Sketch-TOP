@@ -66,3 +66,8 @@ darkeningModeCheckbox.addEventListener("change", (e) => {
     state.setFillMode("normal");
   }
 });
+
+const clearBtn = document.querySelector("#clear-btn");
+clearBtn.addEventListener("click", () => {
+  ui.renderCanvas(state.getCurrentState());
+})

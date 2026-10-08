@@ -13,3 +13,4 @@ basic wireframe ![](https://wireframe.cc/wgsd1z)
   - random rgb with each interaction
 - [x] darkening effect mode
   - darkens by 10% with each interaction
+- [x] i can clear the canvas board and start a new one

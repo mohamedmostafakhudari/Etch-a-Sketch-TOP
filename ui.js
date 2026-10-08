@@ -16,6 +16,13 @@ export function render(state) {
   }
 }
 
+export function renderCanvas(state) {
+  // clears the canvasContainer before adding a new one - useful with resetting
+  canvasContainer.innerHTML = "";
+  const canvas = createCanvas(state);
+  canvasContainer.appendChild(canvas);
+}
+
 export function fillSquare(square, fill) {
   square.style.setProperty("--fill-color", fill);
 }
@@ -51,13 +58,6 @@ function createDarkOverlay() {
 
 function renderCanvasOptions(state) {
   canvasSizeInputText.textContent = state.size;
-}
-
-function renderCanvas(state) {
-  // clears the canvasContainer before adding a new one - useful with resetting
-  canvasContainer.innerHTML = "";
-  const canvas = createCanvas(state);
-  canvasContainer.appendChild(canvas);
 }
 
 function createSquare() {
