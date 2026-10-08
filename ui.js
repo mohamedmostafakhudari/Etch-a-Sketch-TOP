@@ -20,6 +20,35 @@ export function fillSquare(square, fill) {
   square.style.setProperty("--fill-color", fill);
 }
 
+export function darkenSquare(square) {
+  let darkOverlay = square.querySelector(".square-dark-overlay");
+  if (!darkOverlay) {
+    darkOverlay = createDarkOverlay();
+    square.appendChild(darkOverlay);
+  }
+  const darkeningStrength = 0.1;
+  const maxOpacity = 1;
+
+  const newOpacity = Math.min(Number(getComputedStyle(darkOverlay).getPropertyValue('--square-overlay-opacity')) + darkeningStrength, maxOpacity);
+  darkOverlay.style.setProperty('--square-overlay-opacity', newOpacity);
+
+  
+}
+
+export function uncheckRandomMode() {
+  document.querySelector("input[name=random-color-mode]").checked = false;
+}
+
+export function uncheckDarkeningMode() {
+  document.querySelector("input[name=darkening-mode]").checked = false;
+}
+
+function createDarkOverlay() {
+  const div = document.createElement("div");
+  div.className = "square-dark-overlay";
+  return div;
+}
+
 function renderCanvasOptions(state) {
   canvasSizeInputText.textContent = state.size;
 }

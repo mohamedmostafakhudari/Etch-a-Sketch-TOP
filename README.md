@@ -11,5 +11,5 @@ basic wireframe ![](https://wireframe.cc/wgsd1z)
 - [x] i can change the fill color of the square, not always black
 - [x] random fill color mode
   - random rgb with each interaction
-- [ ] darkening effect mode
+- [x] darkening effect mode
   - darkens by 10% with each interaction

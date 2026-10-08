@@ -18,6 +18,8 @@ canvasContainer.addEventListener("mouseover", (e) => {
     ui.fillSquare(square, fillColor);
   } else if (fillMode === "random") {
     ui.fillSquare(square, utils.generateRandRGBClr());
+  } else if (fillMode === "darkening") {
+    ui.darkenSquare(square);
   }
 });
 
@@ -37,15 +39,30 @@ hideGridCheckbox.addEventListener("change", (e) => {
 const colorPicker = document.querySelector("input[name=color-picker]");
 
 colorPicker.addEventListener("change", () => {
+  state.setFillMode("normal");
   state.setFillColor(colorPicker.value);
-})
+  ui.uncheckRandomMode();
+  ui.uncheckDarkeningMode();
+});
 
 const randomColorModeCheckbox = document.querySelector("input[name=random-color-mode]");
 
 randomColorModeCheckbox.addEventListener("change", (e) => {
   if (e.target.checked) {
     state.setFillMode("random");
+    ui.uncheckDarkeningMode();
   } else {
     state.setFillMode("normal");
   }
-})
+});
+
+const darkeningModeCheckbox = document.querySelector("input[name=darkening-mode]");
+
+darkeningModeCheckbox.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    state.setFillMode("darkening");
+    ui.uncheckRandomMode();
+  } else {
+    state.setFillMode("normal");
+  }
+});
