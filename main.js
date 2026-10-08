@@ -1,5 +1,6 @@
 import * as state from "./state.js";
 import * as ui from "./ui.js";
+import * as utils from "./utils.js";
 
 /* Controller [ entry point / orchestrator] ------------------------------------ */
 const canvasContainer = document.querySelector(".canvas-container");
@@ -10,7 +11,14 @@ state.subscribe(currentState => ui.render(currentState));
 canvasContainer.addEventListener("mouseover", (e) => {
   const square = e.target.closest(".square");
   if (!square) return;
-  ui.fillSquare(square, state.getCurrentState().fillColor);
+
+  const { fillColor, fillMode } = state.getCurrentState();
+  
+  if (fillMode === "normal") {
+    ui.fillSquare(square, fillColor);
+  } else if (fillMode === "random") {
+    ui.fillSquare(square, utils.generateRandRGBClr());
+  }
 });
 
 const canvasSizeRange = document.querySelector("input[name=canvas-size]");
@@ -22,16 +30,22 @@ canvasSizeRange.addEventListener("input", () => {
 const hideGridCheckbox = document.querySelector("input[name=hide-grid]");
 
 hideGridCheckbox.addEventListener("change", (e) => {
-  if (e.target.checked) {
-    state.hideGrid();
-  } else {
-    state.showGrid();
-  }
+  state.setShowGrid(!e.target.checked);
 });
 
 
 const colorPicker = document.querySelector("input[name=color-picker]");
+
 colorPicker.addEventListener("change", () => {
-  console.log(colorPicker.value);
   state.setFillColor(colorPicker.value);
+})
+
+const randomColorModeCheckbox = document.querySelector("input[name=random-color-mode]");
+
+randomColorModeCheckbox.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    state.setFillMode("random");
+  } else {
+    state.setFillMode("normal");
+  }
 })

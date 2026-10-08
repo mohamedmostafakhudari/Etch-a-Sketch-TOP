@@ -9,7 +9,7 @@ basic wireframe ![](https://wireframe.cc/wgsd1z)
 - [x] the grid size should be adjustable based on user input
 ### Extra
 - [x] i can change the fill color of the square, not always black
-- [ ] random fill color mode
+- [x] random fill color mode
   - random rgb with each interaction
 - [ ] darkening effect mode
   - darkens by 10% with each interaction

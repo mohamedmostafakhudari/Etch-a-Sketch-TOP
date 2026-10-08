@@ -1,10 +1,13 @@
+import * as utils from "./utils.js";
+
 /* State & Logic --------------------------------------- */
 const drawingCanvasState = {
   width: 600,
   size: 16,
   borderThickness: 1,
-  fillColor: "#000",
-  showGrid: true, 
+  fillColor: "rgb(0,0,0)",
+  showGrid: true,
+  fillMode: "normal" // normal - random - darkening 
 }
 
 const listeners = new Set();
@@ -31,19 +34,23 @@ export function setCanvasSize(newSize) {
   notify();
 }
 
-export function showGrid() {
-  drawingCanvasState.showGrid = true;
-  notify();
-}
-
-export function hideGrid() {
-  drawingCanvasState.showGrid = false;
+export function setShowGrid(bool) {
+  drawingCanvasState.showGrid = bool;
   notify();
 }
 
 export function setFillColor(newColor) {
+  if (newColor.startsWith("#")) {
+    newColor = utils.hexToRgb(newColor);
+  }
+  
   drawingCanvasState.fillColor = newColor;
 }
+
+export function setFillMode(mode) {
+  drawingCanvasState.fillMode = mode;
+}
+
 
 export function getCurrentState() {
   return { ...drawingCanvasState }
